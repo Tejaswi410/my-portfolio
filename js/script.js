@@ -292,27 +292,66 @@ timelineItems.forEach((item, index) => {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Here you would typically send this data to a server
-        console.log('Form submitted:', formData);
-        
-        // Show success message (you can customize this)
-        alert('Thank you for your message! I will get back to you soon.');
-        
-        // Reset form
-        contactForm.reset();
+
+        const formURL = contactForm.getAttribute('action');
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch(formURL, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            let data = null;
+            try {
+                data = await response.json();
+            } catch (err) {
+                console.log('Could not parse JSON:', err);
+            }
+
+            console.log('Formspree response:', response.status, data);
+
+            if (response.ok) {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            } else {
+                if (data && data.errors) {
+                    alert(data.errors.map(err => err.message).join(', '));
+                } else {
+                    alert('Oops! There was an issue submitting your form. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Submission Error:', error);
+            alert('A network error occurred. Please check your connection.');
+        }
     });
 }
+
+// ===========================
+// Form status display
+// ===========================
+const statusDiv = document.getElementById('formStatus');
+
+function showStatus(message, type = 'success') {
+    if (!statusDiv) return;
+    statusDiv.textContent = message;
+    statusDiv.className = `form-status ${type}`; // e.g. success / error
+}
+if (response.ok) {
+    showStatus('Thank you for your message! I will get back to you soon.', 'success');
+    contactForm.reset();
+} else {
+    showStatus('Oops! There was an issue submitting your form. Please try again.', 'error');
+}
+
+
+
 
 // ===========================
 // Stats Counter Animation

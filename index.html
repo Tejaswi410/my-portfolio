@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Tejaswi Yadav">
-    <title>Tejaswi Yadav| AI Engineer Enthusiast</title>
+    <title>Tejaswi Yadav</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -319,7 +319,10 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" 
+                        id="contactForm" 
+                        method="POST" 
+                        action="https://formspree.io/f/xanrdbzp">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -338,6 +341,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
+                <div id="formStatus" class="form-status"></div>
             </div>
         </div>
     </section>

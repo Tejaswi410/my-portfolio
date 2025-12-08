@@ -4,18 +4,26 @@
 
 :root {
     /* Colors - Light Theme */
-    --primary-color: #b2dcf9;
-    --secondary-color: #080231;
-    --accent-color: #054750;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
+     /* Core Brand Colors */
+    --primary-color: #1e3a8a;     /* Royal Blue */
+    --secondary-color: #0f1e4d;   /* Deep Navy */
+    --accent-color: #3b82f6;      /* Pure Blue Accent */
+
+    /* Text Colors */
+    --text-primary: #0f172a;      /* Navy-ish black */
+    --text-secondary: #475569;    /* Slate blue gray */
+
+    /* Backgrounds */
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --bg-secondary: #f1f5f9;      /* Soft cool gray */
+
+    /* Borders */
+    --border-color: #cbd5e1;      /* Light slate */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 50, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 80, 0.10);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 100, 0.15);
     
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -37,11 +45,26 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --bg-primary: #000000;
-    --bg-secondary: #162338;
-    --border-color: #112541;
+     /* Text */
+    --text-primary: #f1f5ff;       /* Soft cool white */
+    --text-secondary: #a5b4fc;     /* Indigo-tinted text */
+
+    /* Backgrounds */
+    --bg-primary: #0a0f24;         /* Deep midnight navy */
+    --bg-secondary: #111a36;       /* Slightly lighter blue-black */
+
+    /* Borders */
+    --border-color: #1e2a53;       /* Subtle royal border */
+
+    /* Royal Blue System */
+    --primary-color: #3b5bdb;      /* Bright royal blue */
+    --secondary-color: #1e2a78;    /* Saturated navy blue */
+    --accent-color: #4f8cff;       /* Glow-like blue accent */
+
+    /* Shadows (lighter in dark mode for balance) */
+    --shadow-sm: 0 1px 2px rgba(0, 20, 80, 0.4);
+    --shadow-md: 0 4px 8px rgba(0, 20, 80, 0.5);
+    --shadow-lg: 0 10px 20px rgba(0, 40, 120, 0.6);
 }
 
 * {
@@ -263,6 +286,7 @@ a {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: var(--spacing-xs);
+    padding-bottom : 0.1em;
 }
 
 .hero-title {
@@ -275,6 +299,8 @@ a {
     border-right: 3px solid var(--primary-color);
     padding-right: 5px;
     animation: blink 0.7s infinite;
+    vertical-align: top;
+    box-sizing: content-box;
 }
 
 .hero-description {
@@ -777,6 +803,20 @@ a {
     resize: vertical;
     min-height: 120px;
 }
+
+.form-status {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.form-status.success {
+    color: #16a34a;
+}
+
+.form-status.error {
+    color: #dc2626;
+}
+
 
 /* ===========================
    Footer
